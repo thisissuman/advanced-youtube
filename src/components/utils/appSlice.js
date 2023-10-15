@@ -7,8 +7,11 @@ const appSlice = createSlice({
     sideBarHandeler: (state) => {
       state.isMenuOpen = !state.isMenuOpen;
     },
+    hideSidebarHandeler: (state) => {
+      state.isMenuOpen = false;
+    },
   },
 });
 
-export const { sideBarHandeler } = appSlice.actions;
+export const { sideBarHandeler,hideSidebarHandeler } = appSlice.actions;
 export default appSlice.reducer;

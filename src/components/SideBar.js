@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-
+import { Link } from "react-router-dom";
 const SideBar = () => {
   const isMenuOpen = useSelector((state) => state.app.isMenuOpen);
   if (!isMenuOpen) {
@@ -9,7 +9,7 @@ const SideBar = () => {
     <div className="px-7 pt-5 ">
       <ul className="flex flex-col items-start">
         <li className="rounded-lg   hover:bg-gray-100 p-1 mt-2 w-36">
-          🏠 Home
+          <Link to="/">🏠 Home</Link>
         </li>
         <li className="rounded-lg   hover:bg-gray-100 p-1  mt-2 w-36">
           🩳 Shorts

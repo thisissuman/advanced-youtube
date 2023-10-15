@@ -4,6 +4,7 @@ import usericon from "../assets/usericon.png";
 import search from "../assets/search.png";
 import { useDispatch } from "react-redux";
 import { sideBarHandeler } from "./utils/appSlice";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -19,8 +20,8 @@ const Header = () => {
           alt="menu"
           className="h-8 w-8 mr-4 ml-4 cursor-pointer"
           onClick={toggleSidebarHandeler}
-        />
-        <img src={logo} alt="logo" className="h-23 w-20 ml-8 scale-150" />
+        />        
+          <img src={logo} alt="logo" className="h-23 w-20 ml-8 scale-150" />
       </div>
       <div className="flex items-center  pr-40">
         <input

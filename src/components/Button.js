@@ -16,8 +16,8 @@ const Button = () => {
   ];
   return (
     <div className="flex">
-      {ArrayofButtons.map((button) => (
-        <div className="mx-3 bg-slate-100 rounded-lg px-4 py-1 mt-5 cursor-pointer hover:bg-black hover:text-slate-50 font-normal">{button}</div>
+      {ArrayofButtons.map((button, index) => (
+        <div key={index} className="mx-3 bg-slate-100 rounded-lg px-4 py-1 mt-5 cursor-pointer hover:bg-black hover:text-slate-50 font-normal">{button}</div>
       ))}
     </div>
   );
