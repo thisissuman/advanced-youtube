@@ -2,6 +2,7 @@ import React from "react";
 import { useSearchParams } from "react-router-dom";
 import ButtonList from "./ButtonList";
 import { useEffect, useState } from "react";
+import CommentsContainer from "./CommentsContainer";
 const WatchPage = () => {
   const [serarch] = useSearchParams();
   const searchedParam = serarch.get("v");
@@ -56,7 +57,11 @@ const WatchPage = () => {
             ⏬Download
           </button>
         </div>
+        <div>
+          <CommentsContainer />
+        </div>
       </div>
+
       <div className="mx-[-5rem]">
         <ButtonList />
       </div>
