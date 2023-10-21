@@ -1,35 +1,16 @@
 import React from "react";
-const arryaofcomments = [
-  {
-    name: "User1",
-    text: "This is the first-level comment.",
-    reply: [
-      {
-        name: "User2",
-        text: "Reply to first-level comment.",
-        reply: [
-          {
-            name: "User1",
-            text: "Reply to second-level comment.",
-            reply: [
-              {
-                name: "User2",
-                text: "Reply to third-level comment.",
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    name: "User3",
-    text: "Another first-level comment.",
-  },
-];
-
-const Comments = () => {
-  return <div data={arryaofcomments[0]}>Comments</div>;
+import usericon from "../assets/usericon.png";
+const Comments = ({ data }) => {
+  const { name, text, reply } = data;
+  return (
+    <div className="flex py-2 shadow-md bg-gray-100 rounded-2xl my-1">
+      <img src={usericon} alt="user" className="h-12  w-12" />
+      <div className="px-3">
+        <p className="font-bold">{name}</p>
+        <p>{text}</p>
+      </div>
+    </div>
+  );
 };
 
 export default Comments;

@@ -7,7 +7,8 @@ const WatchPage = () => {
   const [serarch] = useSearchParams();
   const searchedParam = serarch.get("v");
   const [desc, setDesc] = useState([]);
-
+  /* const { localized, channelTitle } = desc?.items[0]?.snippet;  */
+  
   useEffect(() => {
     getVideoDetails();
   }, []);
@@ -19,11 +20,14 @@ const WatchPage = () => {
         "&key=AIzaSyBJCZG0H60GCTh5wsCeWEMmpV9Dn3LelQI"
     );
     const response = await data.json();
-
-    setDesc(response);
+    if (response) {
+      setDesc(response);
+    }
   };
 
-  return (
+  return desc.length == 0 ? (
+    <h2>Some error occure</h2>
+  ) : (
     <div className="flex">
       <div className="mx-20 my-3 flex flex-col">
         <iframe
@@ -36,11 +40,11 @@ const WatchPage = () => {
           allowFullScreen
           autoPlay
         ></iframe>
-        <h2 className="text-lg font-medium mb-2 mt-4">
-          {/* {desc?.items[0]?.snippet?.localized?.title}  */}
-        </h2>
+        <h2 className="text-lg font-medium mb-2 mt-4">{desc?.items[0]?.snippet?.localized?.title}</h2>
         <div className="flex items-center justify-center mb-5">
-          <div>{/* <h3>{desc?.items[0]?.snippet?.channelTitle}</h3>  */}</div>
+          <div>
+             <h3>{desc?.items[0]?.snippet?.channelTitle}</h3> 
+          </div>
           <button className="mx-3 mb-3 bg-slate-100 rounded-lg px-2 py-1 mt-5 cursor-pointer hover:bg-black hover:text-slate-50 font-normal">
             Subscribe
           </button>

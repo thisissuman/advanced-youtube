@@ -11,14 +11,14 @@ import { useSelector } from "react-redux";
 const Header = () => {
   const dispatch = useDispatch();
   const cachesSearch = useSelector((store) => store.search);
-console.log(cachesSearch);
+// console.log(cachesSearch);
   const toggleSidebarHandeler = () => {
     dispatch(sideBarHandeler());
   };
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestion] = useState([]);
   const [suggestionactive, setSuggestionactive] = useState(false);
-  console.log(suggestionactive);
+  // console.log(suggestionactive);
   const onScollevent = () => {
     setSuggestionactive(false);
   };
