@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
 import WatchPage from "./components/WatchPage";
+import SerarchedContainer from "./components/SerarchedContainer";
 
 function App() {
   const appRouter = createBrowserRouter([
@@ -16,6 +17,10 @@ function App() {
         {
           path: "/",
           element: <MainContainer />,
+        },
+        {
+          path: "searchcontainer",
+          element: <SerarchedContainer />,
         },
         {
           path: "watch",

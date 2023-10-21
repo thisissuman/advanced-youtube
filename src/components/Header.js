@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 const Header = () => {
   const dispatch = useDispatch();
   const cachesSearch = useSelector((store) => store.search);
-// console.log(cachesSearch);
+  // console.log(cachesSearch);
   const toggleSidebarHandeler = () => {
     dispatch(sideBarHandeler());
   };
@@ -52,7 +52,7 @@ const Header = () => {
     );
     const response = await data.json();
     setSuggestion(response[1]);
-
+    console.log(suggestions);
     // update cache
     dispatch(
       cacheSearch({
@@ -86,7 +86,7 @@ const Header = () => {
               setSuggestionactive(true);
             }}
             onFocus={() => setSuggestionactive(true)}
-            onBlur={() => setSuggestionactive(false)}
+//            onBlur={() => setSuggestionactive(false)}
           />
           <button className="rounded-r-full border items-center pr-5 bg-gray-200">
             <img src={search} className="pl-4 h-9 w-19" alt="" />
@@ -96,9 +96,19 @@ const Header = () => {
           <div className="fixed bg-white w-1/3 rounded-lg pl-5 pb-2 mt-5 shadow-lg">
             <ul>
               {suggestions.map((suggestion) => (
-                <li key={suggestion} className="hover:bg-slate-200">
+                <a href="searchcontainer">
+                  <li
+                  key={suggestion}
+                  className="hover:bg-slate-200"
+                  onClick={() => {
+                    console.log("live");
+                    setSuggestionactive(false);
+                    
+                  }}
+                >
                   {"🔍 " + suggestion}
                 </li>
+                </a>
               ))}
             </ul>
           </div>
