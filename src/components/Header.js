@@ -52,7 +52,7 @@ const Header = () => {
     );
     const response = await data.json();
     setSuggestion(response[1]);
-    console.log(suggestions);
+    
     // update cache
     dispatch(
       cacheSearch({
@@ -101,7 +101,7 @@ const Header = () => {
                   key={suggestion}
                   className="hover:bg-slate-200"
                   onClick={() => {
-                    console.log("live");
+                    
                     setSuggestionactive(false);
                     
                   }}

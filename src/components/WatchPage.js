@@ -4,14 +4,18 @@ import ButtonList from "./ButtonList";
 import { useEffect, useState } from "react";
 import CommentsContainer from "./CommentsContainer";
 import LiveChat from "./LiveChat";
+import { useDispatch } from "react-redux";
+import { hideSidebarHandeler } from "./utils/appSlice";
+
 const WatchPage = () => {
   const [serarch] = useSearchParams();
   const searchedParam = serarch.get("v");
   const [desc, setDesc] = useState([]);
   /* const { localized, channelTitle } = desc?.items[0]?.snippet;  */
-
+  const dispatch = useDispatch();
   useEffect(() => {
     getVideoDetails();
+    dispatch(hideSidebarHandeler());
   }, []);
 
   const getVideoDetails = async () => {
@@ -73,7 +77,6 @@ const WatchPage = () => {
         <ButtonList />
         <LiveChat />
       </div>
-      
     </div>
   );
 };
