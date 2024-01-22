@@ -23,14 +23,6 @@ const Header = () => {
     setSuggestionactive(false);
   };
 
-  /* 
-  * cachesSearch = {
-    "Iphone" :["iphone11","iphone14"]
-  }
-  * query = iphone
-  *
-  *
-   */
   window.addEventListener("scroll", onScollevent);
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -47,10 +39,10 @@ const Header = () => {
 
   const getSearchresult = async () => {
     const data = await fetch(
-      "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=" +
-        query
+      "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q="+query
     );
     const response = await data.json();
+    console.log(response);
     setSuggestion(response[1]);
     
     // update cache
@@ -67,7 +59,7 @@ const Header = () => {
         <img
           src={hamburger}
           alt="menu"
-          className="h-8 w-8 mr-4 ml-4 cursor-pointer"
+          className="h-8 w-8 mr-4 ml-4 cursor-pointer  transition-transform duration-500 ease-in-out transform hover:scale-150"
           onClick={toggleSidebarHandeler}
         />
         <a href="/">
