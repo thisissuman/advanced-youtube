@@ -1,6 +1,7 @@
 import React from "react";
-
+import { useSelector } from "react-redux";
 const VideoCard = ({ videos }) => {
+  const isMenuOpen = useSelector((state) => state.app.isMenuOpen);
   const { statistics } = videos;
   const { thumbnails, title, channelTitle,publishedAt } = videos?.snippet;
   function kFormatter(num) {
@@ -17,8 +18,8 @@ const VideoCard = ({ videos }) => {
   const diffInDayss = diffInDays.toFixed();
 
   return (
-    <div className="mt-5 ml-5 w-30">
-      <img
+    <div className={`mt-5 ml-5 w-30 p-5 ${isMenuOpen ? '' : 'scale-110'}`}>
+    <img
         className="h-auto object-cover mb-5 rounded-lg"
         src={thumbnails?.medium?.url}
         alt=""

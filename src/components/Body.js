@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const Body = () => {
   const isMenuOpen = useSelector((state) => state.app.isMenuOpen);
   return (
-    <div className={`flex transition-all duration-500 ease-in-out ${isMenuOpen ? '' : '-translate-x-48'}`}>
+    <div className={`flex transition-all  duration-500 ease-in-out ${isMenuOpen ? '' : '-translate-x-40' }`}>
       <SideBar />
       <Outlet />
     </div>
