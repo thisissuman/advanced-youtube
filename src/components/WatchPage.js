@@ -16,7 +16,7 @@ const WatchPage = () => {
   useEffect(() => {
     getVideoDetails();
     dispatch(hideSidebarHandeler());
-  }, []);
+  });
 
   const getVideoDetails = async () => {
     const data = await fetch(
@@ -30,7 +30,7 @@ const WatchPage = () => {
     }
   };
 
-  return desc.length == 0 ? (
+  return desc.length === 0 ? (
     <h2>Some error occure</h2>
   ) : (
     <div className="flex w-full">
