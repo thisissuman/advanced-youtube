@@ -7,6 +7,8 @@ import { sideBarHandeler } from "./utils/appSlice";
 import { cacheSearch } from "./utils/searchSlice";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { BellRing } from 'lucide-react';
+import { Video } from 'lucide-react';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -107,8 +109,11 @@ const Header = () => {
         )}
       </div>
 
-      <div className="h-19 w-9 mr-10">
-        <img src={usericon} alt="user" className="" />
+      <div className="h-19 w-30  items-center grid grid-flow-col gap-10">
+        
+        <Video/>
+        <BellRing/>
+        <img src={usericon} alt="user" className="mr-10 w-10 " />
       </div>
     </div>
   );
