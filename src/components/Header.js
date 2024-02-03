@@ -7,11 +7,17 @@ import { sideBarHandeler } from "./utils/appSlice";
 import { cacheSearch } from "./utils/searchSlice";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { BellRing } from 'lucide-react';
-import { Video } from 'lucide-react';
+import { BellRing } from "lucide-react";
+import { Video } from "lucide-react";
+import { Link } from "react-router-dom";
+import SerarchedContainer from "./SerarchedContainer";
+import VideoContainer from "./VideoContainer";
+import { whatSearch } from "./utils/whatSearchSlice";
+
 
 const Header = () => {
   const dispatch = useDispatch();
+  // const navigate = useNavigate();
   const cachesSearch = useSelector((store) => store.search);
   // console.log(cachesSearch);
   const toggleSidebarHandeler = () => {
@@ -20,6 +26,8 @@ const Header = () => {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestion] = useState([]);
   const [suggestionactive, setSuggestionactive] = useState(false);
+  const [whatsearched, setWhatSearched] = useState("");
+
   // console.log(suggestionactive);
   const onScollevent = () => {
     setSuggestionactive(false);
@@ -41,11 +49,12 @@ const Header = () => {
 
   const getSearchresult = async () => {
     const data = await fetch(
-      "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q="+query
+      "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=" +
+        query
     );
     const response = await data.json();
     setSuggestion(response[1]);
-    
+
     // update cache
     dispatch(
       cacheSearch({
@@ -53,6 +62,18 @@ const Header = () => {
       })
     );
   };
+
+  const handleSuggestion = (event) => {
+    setQuery(event.target.innerText);
+    setSuggestionactive(false);
+    console.log(event.target.innerText);
+    // navigate('/results?search_query=' + encodeURI(event.target.innerText));
+    setWhatSearched(event.target.innerText);
+    dispatch(whatSearch({
+      whatsearched
+    }))
+    
+ }
 
   return (
     <div className="grid grid-flow-col justify-between items-center shadow-sm bg-inherit">
@@ -79,7 +100,7 @@ const Header = () => {
               setSuggestionactive(true);
             }}
             onFocus={() => setSuggestionactive(true)}
-//            onBlur={() => setSuggestionactive(false)}
+            //            onBlur={() => setSuggestionactive(false)}
           />
           <button className="rounded-r-full border items-center pr-5 bg-gray-200">
             <img src={search} className="pl-4 h-9 w-19" alt="" />
@@ -89,19 +110,16 @@ const Header = () => {
           <div className="fixed z-50 bg-white w-1/3 rounded-lg pl-5 pb-2 mt-5 shadow-lg">
             <ul>
               {suggestions.map((suggestion) => (
-                <a href="searchcontainer">
-                  <li
+                <li
                   key={suggestion}
-                  className="hover:bg-slate-200"
-                  onClick={() => {
+                  className="hover:bg-slate-200 cursor-pointer"
+                  onClick={(e) => {
                     
-                    setSuggestionactive(false);
-                    
+                    handleSuggestion(e)
                   }}
                 >
                   {"🔍 " + suggestion}
                 </li>
-                </a>
               ))}
             </ul>
           </div>
@@ -109,9 +127,8 @@ const Header = () => {
       </div>
 
       <div className="h-19 w-30  items-center grid grid-flow-col gap-10">
-        
-        <Video/>
-        <BellRing/>
+        <Video />
+        <BellRing />
         <img src={usericon} alt="user" className="mr-10 w-10 " />
       </div>
     </div>

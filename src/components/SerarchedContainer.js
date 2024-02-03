@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SerarchedContainer = () => {
+const SerarchedContainer = ({suggestion}) => {
   return (
     <div>SerarchedContainer</div>
   )
