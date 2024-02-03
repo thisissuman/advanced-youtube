@@ -44,7 +44,6 @@ const Header = () => {
       "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q="+query
     );
     const response = await data.json();
-    console.log(response);
     setSuggestion(response[1]);
     
     // update cache
@@ -87,7 +86,7 @@ const Header = () => {
           </button>
         </div>
         {suggestionactive && (
-          <div className="fixed bg-white w-1/3 rounded-lg pl-5 pb-2 mt-5 shadow-lg">
+          <div className="fixed z-50 bg-white w-1/3 rounded-lg pl-5 pb-2 mt-5 shadow-lg">
             <ul>
               {suggestions.map((suggestion) => (
                 <a href="searchcontainer">

@@ -33,7 +33,7 @@ const WatchPage = () => {
   return desc.length === 0 ? (
     <h2>Some error occure</h2>
   ) : (
-    <div className="flex w-full">
+    <div className=" -z-10 flex w-full">
       <div className="mx-20 my-3 flex flex-col">
         <iframe
           className=" rounded-xl"
