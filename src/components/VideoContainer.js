@@ -8,8 +8,8 @@ import { useDispatch } from "react-redux";
 import { hideSidebarHandeler } from "./utils/appSlice";
 import { useSelector } from "react-redux";
 const VideoContainer = () => {
-  const whatIsSearched = useSelector((store) => store.what.context);
-  const lolo = whatIsSearched.whatsearched;
+  const result = useSelector((store) => store.what.context);
+  console.log(result);
   const dispatch = useDispatch();
   const hideSidebarHandelero = () => {
     dispatch(hideSidebarHandeler());
@@ -26,12 +26,14 @@ const VideoContainer = () => {
     setVideos(response.items);
   };
   useEffect(() => {
-    getSearchedVideos();
-  }, [lolo]);
+    if (result) {
+      getSearchedVideos();
+    }
+  }, [result]);
 
   const getSearchedVideos = async () => {
     const data = await fetch(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${lolo}&type=video&key=${GOOGLE_API_KEY}`
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${result}&type=video&key=${GOOGLE_API_KEY}`
     );
     const response = await data.json();
 

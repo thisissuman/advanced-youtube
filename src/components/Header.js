@@ -14,7 +14,6 @@ import SerarchedContainer from "./SerarchedContainer";
 import VideoContainer from "./VideoContainer";
 import { whatSearch } from "./utils/whatSearchSlice";
 
-
 const Header = () => {
   const dispatch = useDispatch();
   // const navigate = useNavigate();
@@ -69,11 +68,8 @@ const Header = () => {
     console.log(event.target.innerText);
     // navigate('/results?search_query=' + encodeURI(event.target.innerText));
     setWhatSearched(event.target.innerText);
-    dispatch(whatSearch({
-      whatsearched
-    }))
-    
- }
+    dispatch(whatSearch(event.target.innerText));
+  };
 
   return (
     <div className="grid grid-flow-col justify-between items-center shadow-sm bg-inherit">
@@ -114,11 +110,10 @@ const Header = () => {
                   key={suggestion}
                   className="hover:bg-slate-200 cursor-pointer"
                   onClick={(e) => {
-                    
-                    handleSuggestion(e)
+                    handleSuggestion(e);
                   }}
                 >
-                  {"🔍 " + suggestion}
+                  {suggestion}
                 </li>
               ))}
             </ul>
