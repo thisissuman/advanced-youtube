@@ -18,7 +18,7 @@ const VideoCard = ({ videos }) => {
   const diffInDayss = diffInDays.toFixed();
 
   return (
-    <div className={`mt-5 ml-5 w-30 p-5 ${isMenuOpen ? '' : 'scale-110'}`}>
+    <div className={`mt-5  ml-5 w-30 p-5 ${isMenuOpen ? '' : 'scale-110'}`}>
     <img
         className="h-auto object-cover mb-5 rounded-lg"
         src={thumbnails?.medium?.url}
