@@ -22,7 +22,7 @@ const VideoContainer = () => {
   const getVideos = async () => {
     const data = await fetch(YOUTUBE_API_URL);
     const response = await data.json();
-
+    console.log(response.items);
     setVideos(response.items);
   };
   useEffect(() => {
@@ -36,16 +36,18 @@ const VideoContainer = () => {
       `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${result}&type=video&key=${GOOGLE_API_KEY}`
     );
     const response = await data.json();
-
+    console.log(response.items);
     setVideos(response.items);
   };
   return (
     <div className="flex flex-wrap">
       {videos.map((video) => {
+        let id = result.length > 0 ? video.id.videoId : video.id;
+        
         return (
           <Link
-            to={"/watch?v=" + video.id}
-            key={video.id}
+            to={"/watch?v=" + id}
+            key={id}
             onClick={hideSidebarHandelero}
           >
             <VideoCard videos={video} />
