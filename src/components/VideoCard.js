@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-const VideoCard = ({ videos }) => {
+const VideoCard = ({ videos,id }) => {
   const isMenuOpen = useSelector((state) => state.app.isMenuOpen);
   const { statistics } = videos;
   const { thumbnails, title, channelTitle,publishedAt } = videos?.snippet;

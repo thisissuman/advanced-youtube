@@ -50,7 +50,7 @@ const VideoContainer = () => {
             key={id}
             onClick={hideSidebarHandelero}
           >
-            <VideoCard videos={video} />
+            <VideoCard  key={id} videos={video} />
           </Link>
         );
       })}
